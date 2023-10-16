@@ -1,0 +1,23 @@
+.appLinks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 25px;
+        font-family: var(--font-poppins);
+        font-weight: 400;
+
+        svg {
+            margin-right: 1rem;
+        }
+
+        &:first-child {
+            margin-right: .625rem;
+        }
+    }
+}
