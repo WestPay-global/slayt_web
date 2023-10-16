@@ -1,7 +1,7 @@
 import './globals.scss'
-// import "./fonts.scss";
 import type { Metadata } from 'next'
 import { Jost, Poppins } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react';
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -27,7 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${jost.variable}`}>{children}</body>
+      <body className={`${poppins.variable} ${jost.variable}`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
