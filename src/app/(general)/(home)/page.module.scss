@@ -1,7 +1,7 @@
 .home {
 
   .hero {
-    height: calc(100vh - 4.625rem);
+    min-height: calc(100vh - 4.6875rem);
     position: relative;
     background-image: url('../assets/Rectangle492.png');
     background-repeat: no-repeat;
@@ -65,6 +65,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
 
       .left {
         // width: calc(50% - 1.875rem);
@@ -150,6 +151,7 @@
       justify-content: space-between;
       width: 100%;
       max-width: 57.1875rem;
+      flex-wrap: wrap;
 
       img {
         margin-right: 1.875rem;
@@ -266,6 +268,7 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        flex-wrap: wrap;
 
         div {
           width: 23.5625rem;
@@ -335,6 +338,7 @@
         .item {
           width: calc(50% - 1.875rem);
           max-width: 31.9375rem;
+          min-width: 18.75rem;
           display: flex;
           margin-bottom: 3.75rem;
 
@@ -402,4 +406,316 @@
     }
   }
 
+}
+
+@media screen and (max-width: 1000px) {
+  .home {
+    .hero {
+
+      .info {
+        padding: 4rem 1rem;
+      }
+    }
+
+    .help {
+      padding: 5.6875rem 1rem 3.75rem;
+
+      .container {
+        justify-content: center;
+        flex-direction: column;
+
+        .left {
+          margin-right: 0;
+          order: 1;
+          max-width: none;
+          width: 100%;
+          flex-grow: 1;
+          margin-top: 3.8125rem;
+
+          h2 {
+            max-width: none;
+          }
+
+          p {
+            margin: .75rem 0rem 2.5rem;
+          }
+
+          a {
+            padding: .75rem 2.5rem;
+          }
+
+          svg {
+            display: none;
+          }
+        }
+
+        .right {
+
+          .img2 {
+            bottom: -3.875rem;
+            left: 3.375rem;
+          }
+        }
+      }
+    }
+
+    .try {
+      padding: 1.1875rem 1rem 3.75rem;
+
+      .container {
+        justify-content: center;
+        flex-direction: column;
+
+        div {
+          width: 100%;
+          max-width: 18.75rem;
+        }
+
+        img {
+          order: 1;
+          margin-right: 0;
+          margin-top: 3.75rem;
+        }
+      }
+    }
+
+    .excite {
+      padding: 3.75rem 1rem 4.625rem;
+
+    }
+
+    .learn {
+      padding: 3.75rem 1rem;
+
+      .container {
+
+        .items {
+          flex-direction: column;
+
+          div {
+            max-width: 20.5rem;
+          }
+        }
+      }
+    }
+
+    .why {
+      padding: 3.75rem 1rem;
+
+      .container {
+        max-width: none;
+        width: 100%;
+
+        .items {
+
+          .item {
+            max-width: none;
+            width: 100%;
+
+            img {
+              margin-right: .9375rem;
+            }
+
+            div {
+              max-width: none;
+            }
+          }
+        }
+      }
+    }
+
+    .start {
+      padding: 3.75rem 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .home {
+    .hero {
+      min-height: calc(100vh - 3.75rem);
+      background-image: url('../assets/Rectangle4492.png');
+
+      .info {
+        h1 {
+          font-size: 1.5rem;
+          line-height: 120%;
+          letter-spacing: .0075rem;
+          max-width: 14.0625rem;
+        }
+
+        p {
+          max-width: 15.0625rem;
+          font-size: 10px;
+          letter-spacing: .0031rem;
+          margin: .75rem 0rem 1.25rem;
+        }
+
+        .trialSection {
+          width: 100%;
+          max-width: 9.75rem;
+          border-radius: .4688rem;
+          height: 1.125rem;
+        }
+      }
+    }
+
+    .help {
+
+      .container {
+
+        .left {
+
+          h2 {
+            font-size: 1.5rem;
+            max-width: 15.0625rem;
+          }
+
+          p {
+            font-size: .75rem;
+            line-height: 180.5%;
+          }
+
+          a {
+            font-size: .9375rem;
+            width: 11.25rem;
+          }
+        }
+
+        .right {
+          .img1 {
+            width: 15rem;
+            height: 21.7013rem;
+          }
+
+          .img2 {
+            width: 8.1799rem;
+            height: 2.7661rem;
+            bottom: -1.25rem;
+            left: 3.375rem;
+          }
+        }
+      }
+    }
+
+    .try {
+
+      .container {
+
+        img {
+          width: 10.9902rem;
+          height: 22.5rem;
+        }
+
+        div {
+          h2 {
+            font-size: 1.5rem;
+            max-width: 12.5rem;
+          }
+
+          .trialSection {
+            margin: 2.5rem 0rem;
+            width: 100%;
+            max-width: 14.625rem;
+            height: 1.6875rem;
+            border-radius: .7031rem;
+          }
+        }
+      }
+    }
+
+    .excite {
+      .container {
+        h2 {
+          font-size: 1.5rem;
+          max-width: 15rem;
+        }
+
+        p {
+          font-size: .75rem;
+        }
+      }
+    }
+
+    .learn {
+      .container {
+        h2 {
+          font-size: 1.5rem;
+          max-width: 15.5rem;
+        }
+
+        .items {
+          div {
+            width: 100%;
+            margin-bottom: 5rem;
+
+            img {
+              width: 20.5rem;
+              height: 20.5rem;
+            }
+
+            h3 {
+              font-size: 1.5rem;
+              margin: 1.25rem 0rem .75rem;
+            }
+
+            p {
+              font-size: .75rem;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .why {
+
+      .container {
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .items {
+
+          .item {
+            img {
+              width: 1.8182rem;
+              height: 1.8182rem;
+            }
+
+            div {
+              h3 {
+                font-size: 1.0909rem;
+                margin-bottom: .5625rem;
+              }
+
+              p {
+                font-size: .5454rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .start {
+      .container {
+        h2 {
+          font-size: 1.5rem;
+          max-width: 18.75rem;
+        }
+
+        .trialSection {
+          margin: 2.5rem 0rem;
+          width: 100%;
+          max-width: 14.625rem;
+          height: 1.6875rem;
+          border-radius: .7031rem;
+        }
+      }
+    }
+  }
 }

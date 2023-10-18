@@ -15,6 +15,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 5rem;
+            flex-wrap: wrap;
 
             .left {
                 margin-right: 1.25rem;
@@ -100,8 +101,6 @@
                         font-weight: 300;
                         letter-spacing: .0056rem;
                         max-width: 17.75rem;
-
-
                     }
 
                     &:last-child {
@@ -115,6 +114,109 @@
         .bottom {
             .download {
                 max-width: 26.125rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .footer {
+        padding: 3.75rem 1rem;
+
+        .container {
+
+            .top {
+                margin-bottom: 3.75rem;
+
+                .left {
+                    width: 100%;
+                    margin-right: 0;
+                }
+
+                .middle {
+                    margin: 2.5rem 0rem;
+                    width: 50%;
+                }
+            }
+
+            .bottom {
+                .download {
+                    max-width: 18.75rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .footer {
+
+        .container {
+
+            .top {
+                .left {
+                    img {
+                        width: 2.5449rem;
+                        height: 2.5rem;
+                    }
+
+                    p {
+                        font-size: .75rem;
+                        margin: .75rem 0rem 2.5rem;
+                    }
+
+                    div {
+                        a {
+                            svg {
+                                transform: scale(0.6);
+                            }
+
+                            &:nth-child(2) {
+                                margin: 0rem .75rem;
+                            }
+                        }
+                    }
+                }
+
+                .middle {
+                    h3 {
+                        font-size: .875rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    ul {
+                        li {
+                            margin-bottom: .5rem;
+
+                            a {
+                                font-size: .625rem;
+                            }
+                        }
+                    }
+                }
+
+                .contact {
+                    h3 {
+                        font-size: .875rem;
+                        margin-bottom: 1.0313rem;
+                    }
+
+                    div {
+                        margin-bottom: .5625rem;
+
+                        svg {
+                            transform: scale(0.5);
+                            margin-right: .5rem;
+                            margin-top: -8px;
+                        }
+
+                        p {
+                            font-size: .625rem;
+                            letter-spacing: .0031rem;
+                            max-width: none;
+                        }
+                    }
+                }
             }
         }
     }

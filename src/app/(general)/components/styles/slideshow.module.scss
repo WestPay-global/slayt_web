@@ -1,8 +1,9 @@
 .slideshow {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
-    width: 100%;
+    width: calc(100% - 3.75rem);
     max-width: 75.625rem;
 
     .imageContainer {
@@ -55,6 +56,10 @@
                 bottom: -3.625rem;
             }
         }
+
+        .iconMobile {
+            display: none;
+        }
     }
 
     button {
@@ -74,4 +79,95 @@
         }
     }
 
+}
+
+@media screen and (max-width: 1000px) {
+    .slideshow {
+        width: calc(100% - 1rem);
+
+        .imageContainer {
+            width: 100%;
+            max-width: 19.5315rem;
+        }
+
+        .current {
+            margin: 0rem 2rem;
+            max-width: 21.875rem;
+        }
+
+        button {
+            &:first-child {
+                left: -8px;
+            }
+
+            &:last-child {
+                right: -8px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .slideshow {
+        width: fit-content;
+
+        .imageContainer {
+            width: 4.439rem;
+            height: 2.9365rem;
+
+            img {
+                border-radius: .2059rem;
+            }
+        }
+
+        .current {
+            width: 139.465px;
+            height: 92.26px;
+            margin: 0rem 1rem;
+
+            img {
+                border-radius: 6.468px;
+            }
+
+            .iconMobile {
+                display: block;
+            }
+
+            .iconWeb {
+                display: none;
+            }
+
+            svg {
+
+                &:nth-child(5) {
+                    top: -0.7106rem;
+                    left: -0.7588rem;
+                }
+
+                &:nth-child(6) {
+                    top: -1.05rem;
+                    right: -2.6856rem;
+                }
+
+                &:nth-child(7) {
+                    right: -0.9688rem;
+                    bottom: -0.6625rem;
+                }
+
+                &:nth-child(8) {
+                    left: -2.7119rem;
+                    bottom: -0.9337rem;
+                }
+            }
+        }
+
+        button {
+            width: .9685rem;
+            height: .9691rem;
+
+            svg {
+                transform: scale(0.6);
+            }
+        }
+    }
 }

@@ -128,7 +128,9 @@ export default function Home() {
         <div className={styles.info}>
           <h1>Transform Chores into Adventures</h1>
           <p>Discover SLAYT: The App That Makes Household Responsibilities Fun and Rewarding for the Whole Family</p>
-          <FreeTrial backgroundColor='#FFF' />
+          <section className={styles.trialSection}>
+            <FreeTrial backgroundColor='#FFF' />
+          </section>
         </div>
         <div className={styles.fade}></div>
       </div>

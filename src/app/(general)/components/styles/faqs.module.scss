@@ -24,7 +24,7 @@
             overflow: hidden;
 
             .AccordionHeader {
-                height: 3rem;
+                min-height: 3rem;
                 width: 100%;
 
 
@@ -38,6 +38,7 @@
                     font-weight: 500;
                     letter-spacing: 0.16px;
                     width: 100%;
+                    text-align: start;
 
                     &[data-state='open'] {
                         .AccordionChevron {
@@ -107,6 +108,56 @@
 
             to {
                 height: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .faqs {
+        padding: 2.5rem 1.25rem;
+
+        .AccordionRoot {
+            .AccordionItem {
+                .AccordionHeader {
+                    .AccordionTrigger {
+                        font-size: 1.75rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .faqs {
+
+        h2 {
+            font-size: .6875rem;
+        }
+
+        .AccordionRoot {
+            .AccordionItem {
+                margin-bottom: 1rem;
+
+                .AccordionHeader {
+                    min-height: 1rem;
+
+                    .AccordionTrigger {
+                        font-size: .625rem;
+                    }
+
+                    .AccordionChevron {
+                        width: .9461rem;
+                        height: .9461rem;
+                    }
+                }
+
+                .AccordionContent {
+                    p {
+                        font-size: .625rem;
+                    }
+                }
             }
         }
     }

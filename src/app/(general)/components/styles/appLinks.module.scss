@@ -20,4 +20,26 @@
             margin-right: .625rem;
         }
     }
+
+    .mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .appLinks {
+
+        .web {
+            display: none;
+        }
+
+        .mobile {
+            display: flex;
+        }
+
+        a {
+            padding: .75rem 1rem;
+            font-size: .5rem;
+        }
+    }
 }

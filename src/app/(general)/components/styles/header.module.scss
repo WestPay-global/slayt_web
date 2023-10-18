@@ -65,8 +65,117 @@
             color: #FFF;
         }
     }
+
+    .dropdown {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+
+        nav,
+        .contact {
+            display: none;
+        }
+
+        .dropdown {
+            display: block;
+            margin-left: 1.5625rem;
+            position: relative;
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                background: transparent;
+                width: 40px;
+                height: 100%;
+                transition: 0.5s ease;
+            }
+
+            .Icon {
+                color: #FFF;
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+
+            .menu {
+                background-color: #00A3FF;
+                width: calc(100vw - 40px);
+                max-width: 22.5rem;
+                height: calc(100vh - 60px);
+                max-height: 50rem;
+                border-radius: 5px;
+                margin-top: .9375rem;
+                box-shadow: 0rem .4375rem .375rem 0rem rgba(0, 0, 0, 0.25);
+                z-index: 999;
+                padding: 2.5rem 1rem;
+                overflow-y: scroll;
+
+                .heading {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 3rem;
+
+                    img {
+                        width: 4rem;
+                        height: 1.125rem;
+                    }
+                }
+
+                .DropdownGroup {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+
+                    a {
+                        color: #FFF;
+                        font-size: 20px;
+                        font-weight: 400;
+                        letter-spacing: .0047rem;
+                        font-family: var(--font-poppins);
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        transition: 0.5s ease;
+                        margin-bottom: 1.875rem;
+
+                        &:last-child {
+                            margin-bottom: 0px;
+                            padding: .5rem 2.5rem;
+                            justify-content: center;
+                            border-radius: 25px;
+                            background: #FFF;
+                            width: fit-content;
+                            color: #00A3FF;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 576px) {
-    // .header {}
+    .header {
+        height: 3.75rem;
+
+        .logo {
+            width: 4rem;
+            height: 1.125rem;
+        }
+
+        .dropdown {
+            .menu {
+                .DropdownGroup {
+                    a {
+                        font-size: .9375rem;
+                    }
+                }
+            }
+        }
+    }
 }
