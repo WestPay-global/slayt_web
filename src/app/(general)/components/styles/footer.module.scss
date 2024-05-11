@@ -36,9 +36,10 @@
                     align-items: center;
 
                     a {
-                        &:nth-child(2) {
-                            margin: 0rem 3.75rem;
-                        }
+                        // &:nth-child(3) {
+                        //     margin: 0rem 3.75rem;
+                        // }
+                        margin-right: 3rem;
                     }
                 }
             }
