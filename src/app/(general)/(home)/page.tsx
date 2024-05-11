@@ -170,7 +170,7 @@ export default function Home() {
             <section className={styles.trialSection}>
               <FreeTrial backgroundColor='#E5F6FF' />
             </section>
-            <AppLinks iconFill="#212121" padding='1rem' fontSize='1rem' />
+            <AppLinks iconFill="#212121" padding='1rem' fontSize='1rem' showAmazon={false} />
           </div>
         </div>
       </div>
@@ -217,7 +217,7 @@ export default function Home() {
           <section className={styles.trialSection}>
             <FreeTrial backgroundColor='#E5F6FF' />
           </section>
-          <AppLinks iconFill="#212121" padding='1rem' fontSize='1rem' />
+          <AppLinks iconFill="#212121" padding='1rem' fontSize='1rem'  showAmazon={true} />
         </div>
       </div>
       <FAQs faqs={faqs} />
