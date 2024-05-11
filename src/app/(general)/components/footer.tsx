@@ -124,7 +124,7 @@ const Footer: React.FunctionComponent<FooterProps> = () => {
                 </div>
                 <div className={styles.bottom}>
                     <div className={styles.download}>
-                        <AppLinks iconFill='#F2F2F2' padding='0.75rem 1rem' fontSize='0.75rem' />
+                        <AppLinks iconFill='#F2F2F2' padding='0.75rem 1rem' fontSize='0.75rem' showAmazon={false} />
                     </div>
                 </div>
             </div>
