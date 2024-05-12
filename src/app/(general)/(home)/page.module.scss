@@ -63,7 +63,7 @@
       max-width: 69.8125rem;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       flex-wrap: wrap;
 
       .left {
@@ -147,13 +147,13 @@
     .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       width: 100%;
       max-width: 57.1875rem;
       flex-wrap: wrap;
 
       img {
-        margin-right: 1.875rem;
+        // margin-right: 1.875rem;
         width: 17.1875rem;
         height: 35.1875rem;
       }
