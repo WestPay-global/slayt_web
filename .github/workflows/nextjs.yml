@@ -36,9 +36,9 @@ jobs:
     - name: 📂 Sync files via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME  }}
-        password: ${{ secrets.FTP_PASS }}
+        server: http://ftp.slayt.co
+        username: slayt-web@slayt.co
+        password: DA*l&re7OP^3
         protocol: ftps
   # Build job
   build:
