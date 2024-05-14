@@ -25,6 +25,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  web-deploy:
+    name: 🎉 Deploy website
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout the repository
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    # sync files via FTP
+    - name: 📂 Sync files via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME  }}
+        password: ${{ secrets.FTP_PASS }}
+        protocol: ftps
   # Build job
   build:
     runs-on: ubuntu-latest
@@ -79,14 +94,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      # Checkout the repository
-      - name: 🚚 Get latest code
-      uses: actions/checkout@v4
-      # sync files via FTP
-      - name: 📂 Sync files via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME  }}
-        password: ${{ secrets.FTP_PASS }}
-        protocol: ftps
