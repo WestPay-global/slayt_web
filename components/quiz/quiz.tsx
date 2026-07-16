@@ -36,7 +36,6 @@ import {
 import {
     AGE_OPTIONS,
     ANALYSING_STEPS,
-    COUNTRIES,
     QUIZ_STEPS,
     SCALE_OPTIONS,
     getResultTier,
@@ -45,7 +44,7 @@ import {
 const PRIMARY_BTN =
     "bg-[#0B5CAD] text-white hover:bg-[#0A5199] transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
 
-type Phase = "intro" | "quiz" | "analysing" | "results" | "unlock" | "done";
+type Phase = "intro" | "quiz" | "analysing" | "unlock" | "done";
 
 const introBenefits = [
     { icon: Heart, label: "Your child’s Responsibility Score" },
@@ -77,7 +76,7 @@ export default function Quiz() {
     // unlock form
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
-    const [country, setCountry] = useState("");
+    const [consent, setConsent] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
     const totalSteps = QUIZ_STEPS.length;
@@ -125,7 +124,7 @@ export default function Quiz() {
                 body: JSON.stringify({
                     fullName,
                     email,
-                    country,
+                    consent,
                     age,
                     childFor,
                     score: scaledScore,
@@ -335,16 +334,7 @@ export default function Quiz() {
                     {phase === "analysing" && (
                         <Analysing
                             key="analysing"
-                            onDone={() => setPhase("results")}
-                        />
-                    )}
-
-                    {phase === "results" && (
-                        <Results
-                            key="results"
-                            score={scaledScore}
-                            tier={tier}
-                            onUnlock={() => setPhase("unlock")}
+                            onDone={() => setPhase("unlock")}
                         />
                     )}
 
@@ -355,8 +345,8 @@ export default function Quiz() {
                             setFullName={setFullName}
                             email={email}
                             setEmail={setEmail}
-                            country={country}
-                            setCountry={setCountry}
+                            consent={consent}
+                            setConsent={setConsent}
                             submitting={submitting}
                             onSubmit={submitReport}
                         />
@@ -671,137 +661,6 @@ function Analysing({ onDone }: { onDone: () => void }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Results                                                             */
-/* ------------------------------------------------------------------ */
-
-function Results({
-    score,
-    tier,
-    onUnlock,
-}: {
-    score: number;
-    tier: ReturnType<typeof getResultTier>;
-    onUnlock: () => void;
-}) {
-    const radius = 70;
-    const circumference = 2 * Math.PI * radius;
-    const pct = score / DISPLAY_MAX;
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="rounded-3xl bg-white p-6 shadow-[0_20px_60px_-30px_rgba(0,55,85,0.35)] md:p-10"
-        >
-            <h2 className="text-center !text-3xl font-bold text-navy">
-                Your Child&apos;s Responsibility Profile
-            </h2>
-
-            {/* gauge */}
-            <div className="mt-6 flex justify-center">
-                <div className="relative h-48 w-48">
-                    <svg
-                        className="h-full w-full -rotate-90"
-                        viewBox="0 0 160 160"
-                    >
-                        <defs>
-                            <linearGradient
-                                id="scoreGradient"
-                                x1="0%"
-                                y1="0%"
-                                x2="100%"
-                                y2="100%"
-                            >
-                                <stop offset="0%" stopColor={tier.ringFrom} />
-                                <stop offset="100%" stopColor={tier.ringTo} />
-                            </linearGradient>
-                        </defs>
-                        <circle
-                            cx="80"
-                            cy="80"
-                            r={radius}
-                            fill="none"
-                            stroke="#F1F3F0"
-                            strokeWidth="12"
-                        />
-                        <motion.circle
-                            cx="80"
-                            cy="80"
-                            r={radius}
-                            fill="none"
-                            stroke="url(#scoreGradient)"
-                            strokeWidth="12"
-                            strokeLinecap="round"
-                            strokeDasharray={circumference}
-                            initial={{ strokeDashoffset: circumference }}
-                            animate={{
-                                strokeDashoffset:
-                                    circumference - circumference * pct,
-                            }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                        />
-                    </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-5xl font-bold text-navy">
-                            {score}
-                        </span>
-                        <span className="text-lg font-medium text-navy/70">
-                            /{DISPLAY_MAX}
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="mt-2 flex justify-center">
-                <span
-                    className={`rounded-full px-5 py-2 text-sm font-bold ${tier.badgeBg} ${tier.badgeText}`}
-                >
-                    {tier.label}
-                </span>
-            </div>
-
-            <p className="mx-auto mt-4 max-w-xl text-center text-base text-muted_foreground">
-                {tier.summary}
-            </p>
-
-            <div className="mt-8">
-                <h3 className="!text-lg font-bold text-muted_foreground">
-                    Strength
-                </h3>
-                <ul className="mt-3 space-y-3">
-                    {tier.strengths.map((s) => (
-                        <li key={s} className="flex items-center gap-3">
-                            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#27AE60]">
-                                <Check size={14} className="text-white" />
-                            </span>
-                            <span className="text-sm font-medium text-navy">
-                                {s}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="mt-6">
-                <h3 className="!text-lg font-bold text-muted_foreground">
-                    Biggest Opportunity
-                </h3>
-                <p className="mt-2 text-base text-navy">{tier.opportunity}</p>
-            </div>
-
-            <button
-                onClick={onUnlock}
-                className={`mt-8 w-full rounded-full py-4 text-sm font-bold ${PRIMARY_BTN}`}
-            >
-                Unlock My Personalised Action Plan
-            </button>
-        </motion.div>
-    );
-}
-
-/* ------------------------------------------------------------------ */
 /* Unlock                                                              */
 /* ------------------------------------------------------------------ */
 
@@ -810,8 +669,8 @@ function Unlock({
     setFullName,
     email,
     setEmail,
-    country,
-    setCountry,
+    consent,
+    setConsent,
     submitting,
     onSubmit,
 }: {
@@ -819,12 +678,13 @@ function Unlock({
     setFullName: (v: string) => void;
     email: string;
     setEmail: (v: string) => void;
-    country: string;
-    setCountry: (v: string) => void;
+    consent: boolean;
+    setConsent: (v: boolean) => void;
     submitting: boolean;
     onSubmit: () => void;
 }) {
-    const valid = fullName.trim() !== "" && /\S+@\S+\.\S+/.test(email);
+    const valid =
+        fullName.trim() !== "" && /\S+@\S+\.\S+/.test(email) && consent;
 
     return (
         <motion.div
@@ -894,23 +754,32 @@ function Unlock({
                     />
                 </div>
 
-                <div>
-                    <label className="text-sm font-medium text-navy">
-                        Country
-                    </label>
-                    <Select value={country} onValueChange={setCountry}>
-                        <SelectTrigger className="mt-2 h-[52px] rounded-full border-border px-5 text-navy">
-                            <SelectValue placeholder="Select your country" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {COUNTRIES.map((c) => (
-                                <SelectItem key={c} value={c}>
-                                    {c}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                </div>
+                <label className="flex cursor-pointer items-start gap-3 rounded-2xl p-4 transition-colors hover:border-[#12A0F5]/50">
+                    <button
+                        type="button"
+                        role="checkbox"
+                        aria-checked={consent}
+                        onClick={() => setConsent(!consent)}
+                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 transition-colors ${
+                            consent
+                                ? "border-[#0B5CAD] bg-[#0B5CAD]"
+                                : "border-gray-300 bg-white"
+                        }`}
+                    >
+                        {consent && (
+                            <Check
+                                size={13}
+                                className="text-white"
+                                strokeWidth={3}
+                            />
+                        )}
+                    </button>
+                    <span className="text-sm text-muted_foreground">
+                        Yes, email me my free parenting report and occasional
+                        tips to help my child build responsibility. You can
+                        unsubscribe at any time.
+                    </span>
+                </label>
 
                 <button
                     type="submit"

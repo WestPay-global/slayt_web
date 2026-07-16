@@ -110,22 +110,6 @@ export const QUIZ_STEPS: QuizStep[] = [
 
 export const AGE_OPTIONS = Array.from({ length: 15 }, (_, i) => `${i + 4}`);
 
-export const COUNTRIES = [
-    "United States",
-    "United Kingdom",
-    "Canada",
-    "Australia",
-    "Nigeria",
-    "Ghana",
-    "South Africa",
-    "Ireland",
-    "New Zealand",
-    "India",
-    "Germany",
-    "France",
-    "Other",
-];
-
 export const ANALYSING_STEPS = [
     "Analyzing your answers...",
     "Comparing responsibility habits...",
