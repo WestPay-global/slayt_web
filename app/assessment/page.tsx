@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import Quiz from "@/components/quiz/quiz";
+import Quiz from "@/components/assessment/quiz";
 
 export const metadata: Metadata = {
     title: "How Responsible Is Your Child? | Free Parenting Assessment",

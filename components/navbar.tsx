@@ -17,7 +17,7 @@ const navLinks = [
         label: "Resources",
         children: [
             { href: "/blog", label: "Blog" },
-            { href: "/quiz", label: "Quiz" },
+            { href: "/assessment", label: "Assessment" },
         ],
     },
 ];
