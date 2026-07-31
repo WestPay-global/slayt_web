@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Smooch } from "next/font/google";
 import ScrollToTop from "@/components/scroll-to-top";
 
@@ -71,6 +72,19 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${smooch.variable}`}>
+          {/* Google Ads Global Site Tag */}
+            <Script
+                 src="https://www.googletagmanager.com/gtag/js?id=AW-17360140927"
+                 strategy="afterInteractive"
+            />
+            <Script id="google-ads" strategy="afterInteractive">
+                              {`
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                                gtag('config', 'AW-17360140927');
+                              `}
+            </Script>
             <body className="antialiased">
                 <ScrollToTop />
                 {children}
