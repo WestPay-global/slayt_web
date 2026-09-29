@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "What age is this best for?",
     answer:
-      "Slayt works best for children ages 4\u201312. Task and reminders can be adjusted making it flexible for younger or older kids.",
+      "Slayt works best for children ages 4\u201318. Task and reminders can be adjusted making it flexible for younger or older kids.",
   },
   {
     question: "Does Slayt replace parenting?",

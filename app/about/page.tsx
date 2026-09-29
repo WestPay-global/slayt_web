@@ -11,20 +11,41 @@ import DesignedForFamilies from "@/components/about/designed-for-families";
 import FamiliesSeeing from "@/components/about/families-seeing";
 import PrivacyAndMission from "@/components/about/privacy-and-mission";
 
+const title = "About Slayt | Helping Children Grow with Confidence";
+const description =
+    "Discover why we built Slayt: to help parents guide everyday growth through clear routines, encouragement and age-appropriate responsibility.";
+
 export const metadata: Metadata = {
-    title: "Our Mission | SLAYT Family Chore App",
-    description:
-        "SLAYT helps children grow responsibly using positive rewards, strong privacy, encryption, and full user control. Learn why we built this app.",
+    title: { absolute: title },
+    description,
     keywords: [
-        "slayt mission",
-        "family chore app mission",
+        "about slayt",
+        "parenting app",
         "positive parenting",
         "kids responsibility",
-        "family values app",
+        "family routines",
     ],
+    alternates: { canonical: "/about" },
     openGraph: {
-        title: "Our Mission | SLAYT",
-        description: "Building better habits and stronger families.",
+        type: "website",
+        url: "https://theslayt.com/about",
+        siteName: "SLAYT",
+        title,
+        description,
+        images: [
+            {
+                url: "/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "About Slayt",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: ["/og-image.png"],
     },
 };
 

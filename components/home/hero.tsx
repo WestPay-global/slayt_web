@@ -54,10 +54,10 @@ export default function Hero() {
                         transition={{ duration: 0.6 }}
                         className="font-bold text-navy text-balance"
                     >
-                        Stop arguing about chores.{" "}
+                        Help your child grow into{" "}
                         <br className="hidden md:block" />
-                        Start raising <BouncingText text="responsible kids" />
-                        &mdash; without reminders.
+                        the <BouncingText text="person" />
+                        they&rsquo;re becoming.
                     </motion.h1>
 
                     <motion.p
@@ -66,9 +66,12 @@ export default function Hero() {
                         transition={{ duration: 0.6, delay: 0.15 }}
                         className="mx-auto mt-6 max-w-lg text-muted_foreground"
                     >
-                        Slayt turns daily battles into habits kids actually
-                        follow. <br />
-                        Most parents see changes in the first 7 days.
+                        Slayt helps families build routines, celebrate
+                        progress, <br className="hidden md:block" />
+                        and give children more responsibility as they
+                        grow
+                        <br className="hidden md:block" />
+                        while keeping parents connected and in control.
                     </motion.p>
 
                     <motion.div
@@ -98,7 +101,7 @@ export default function Hero() {
                             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal text-white shadow-lg group-hover:scale-110 transition-transform">
                                 <Play size={18} fill="currentColor" />
                             </span>
-                            Watch 30s Demo
+                            See How Slayt Works
                         </motion.button>
                     </motion.div>
 
@@ -110,15 +113,11 @@ export default function Hero() {
                     >
                         <span className="flex items-center gap-1.5">
                             <CheckCircle2 size={14} className="text-navy" />
-                            No credit card
+                            Made for families with children aged 4–18
                         </span>
                         <span className="flex items-center gap-1.5">
                             <CheckCircle2 size={14} className="text-navy" />
-                            Works for ages 4–12
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                            <CheckCircle2 size={14} className="text-navy" />
-                            Parent approved
+                            Set up together in minutes
                         </span>
                     </motion.div>
                 </div>
