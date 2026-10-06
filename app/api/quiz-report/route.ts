@@ -3,6 +3,7 @@ import path from "path";
 import sharp from "sharp";
 import { NextRequest, NextResponse } from "next/server";
 import { createLead } from "@/lib/monday";
+import { normalizeAssessmentPhone } from "@/lib/assessment-phone";
 
 /**
  * Sends the parenting-assessment report to the parent's email.
@@ -25,6 +26,8 @@ const PLAY_STORE_URL =
 type ReportPayload = {
     fullName?: string;
     email?: string;
+    phone?: string;
+    phoneCountryCode?: string;
     consent?: boolean;
     age?: string;
     childFor?: string;
@@ -273,9 +276,17 @@ export async function POST(req: NextRequest) {
         );
     }
 
-    if (!body.email || !/\S+@\S+\.\S+/.test(body.email)) {
+    if (!body || typeof body.email !== "string" || !/\S+@\S+\.\S+/.test(body.email)) {
         return NextResponse.json(
             { sent: false, message: "A valid email is required" },
+            { status: 400 },
+        );
+    }
+
+    const contact = normalizeAssessmentPhone(body.phone, body.phoneCountryCode);
+    if (!contact) {
+        return NextResponse.json(
+            { sent: false, message: "A valid phone number is required" },
             { status: 400 },
         );
     }
@@ -288,10 +299,26 @@ export async function POST(req: NextRequest) {
         );
     }
 
+    // Persist the parent's contact details before confirming submission.
+    try {
+        await createLead(
+            body.fullName ?? "Unknown",
+            body.email,
+            contact.phone,
+            contact.countryShortName,
+        );
+    } catch (err) {
+        console.error("[quiz-report] Failed to create Monday lead:", err);
+        return NextResponse.json(
+            { sent: false, message: "Unable to save your contact details. Please check your phone number and try again." },
+            { status: 502 },
+        );
+    }
+
     const apiKey = process.env.RESEND_API_KEY;
     const from = process.env.QUIZ_FROM_EMAIL;
 
-    // No provider configured — succeed silently so the flow isn't blocked.
+    // The client checks `sent` before showing the success screen.
     if (!apiKey || !from) {
         console.warn(
             "[quiz-report] RESEND_API_KEY / QUIZ_FROM_EMAIL not set — email not sent.",
@@ -307,16 +334,6 @@ export async function POST(req: NextRequest) {
             loadStaticAssets(),
             buildRingPng(body.score ?? 0, body.maxScore ?? 30),
         ]);
-
-        // Save the lead to Monday.com
-        try {
-            await createLead(
-                body.fullName ?? "Unknown",
-                body.email
-              );
-            } catch (err) {
-                console.error("[quiz-report] Failed to create Monday lead:", err);
-          }
 
         const res = await fetch("https://api.resend.com/emails", {
             method: "POST",

@@ -1,8 +1,18 @@
-export async function createLead(name: string, email: string) {
+export async function createLead(
+  name: string,
+  email: string,
+  phone: string,
+  countryShortName: string,
+) {
+  const phoneColumnId = process.env.MONDAY_PHONE_COLUMN_ID || "phone_mm7w8bc9";
   const columnValues = JSON.stringify({
     email_mm5aqhxx: {
       email,
       text: email,
+    },
+    [phoneColumnId]: {
+      phone,
+      countryShortName,
     },
   });
 
@@ -36,7 +46,7 @@ export async function createLead(name: string, email: string) {
 
   const result = await response.json();
 
-  if (result.errors) {
+  if (!response.ok || result.errors?.length || !result.data?.create_item?.id) {
     console.error(result.errors);
     throw new Error("Failed to create lead");
   }

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function BouncingText({ text = "responsible kids" }: { text?: string }) {
   return (
-    <span className="font-smooch text-blue pr-3">
+    <span className="inline-block whitespace-nowrap font-smooch text-blue pr-3">
       {text.split("").map((char, i) => (
         <motion.span
           key={i}

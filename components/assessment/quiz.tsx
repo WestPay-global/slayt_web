@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { normalizeAssessmentPhone } from "@/lib/assessment-phone";
 import {
     Heart,
     CheckCheck,
@@ -15,6 +16,7 @@ import {
     Circle,
     Lock,
     Send,
+    ChevronDown,
 } from "lucide-react";
 
 import Logo from "@/images/logo.png";
@@ -76,8 +78,11 @@ export default function Quiz() {
     // unlock form
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [phoneCountryCode, setPhoneCountryCode] = useState("+234");
     const [consent, setConsent] = useState(false);
     const [submitting, setSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState("");
 
     const totalSteps = QUIZ_STEPS.length;
     const current = QUIZ_STEPS[step];
@@ -117,13 +122,16 @@ export default function Quiz() {
 
     const submitReport = async () => {
         setSubmitting(true);
+        setSubmitError("");
         try {
-            await fetch("/api/quiz-report", {
+            const response = await fetch("/api/quiz-report", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     fullName,
                     email,
+                    phone,
+                    phoneCountryCode,
                     consent,
                     age,
                     childFor,
@@ -135,11 +143,16 @@ export default function Quiz() {
                     opportunity: tier.opportunity,
                 }),
             });
+            const result = await response.json();
+            if (!response.ok || !result.sent) {
+                setSubmitError(result.message || "Unable to submit. Please try again.");
+                return;
+            }
+            setPhase("done");
         } catch {
-            // network failure shouldn't trap the user — the report is queued
+            setSubmitError("Unable to connect. Please try again.");
         } finally {
             setSubmitting(false);
-            setPhase("done");
         }
     };
 
@@ -345,9 +358,14 @@ export default function Quiz() {
                             setFullName={setFullName}
                             email={email}
                             setEmail={setEmail}
+                            phone={phone}
+                            setPhone={setPhone}
+                            phoneCountryCode={phoneCountryCode}
+                            setPhoneCountryCode={setPhoneCountryCode}
                             consent={consent}
                             setConsent={setConsent}
                             submitting={submitting}
+                            submitError={submitError}
                             onSubmit={submitReport}
                         />
                     )}
@@ -669,22 +687,36 @@ function Unlock({
     setFullName,
     email,
     setEmail,
+    phone,
+    setPhone,
+    phoneCountryCode,
+    setPhoneCountryCode,
     consent,
     setConsent,
     submitting,
+    submitError,
     onSubmit,
 }: {
     fullName: string;
     setFullName: (v: string) => void;
     email: string;
     setEmail: (v: string) => void;
+    phone: string;
+    setPhone: (v: string) => void;
+    phoneCountryCode: string;
+    setPhoneCountryCode: (v: string) => void;
     consent: boolean;
     setConsent: (v: boolean) => void;
     submitting: boolean;
+    submitError: string;
     onSubmit: () => void;
 }) {
+    const validPhone = normalizeAssessmentPhone(phone, phoneCountryCode);
     const valid =
-        fullName.trim() !== "" && /\S+@\S+\.\S+/.test(email) && consent;
+        fullName.trim() !== "" &&
+        /\S+@\S+\.\S+/.test(email) &&
+        validPhone !== null &&
+        consent;
 
     return (
         <motion.div
@@ -742,6 +774,48 @@ function Unlock({
                 </div>
 
                 <div>
+                    <label htmlFor="assessment-phone" className="text-sm font-medium text-navy">
+                        Phone Number
+                    </label>
+                    <div className="mt-2 flex items-center gap-2">
+                        <div className="relative w-20 shrink-0">
+                            <select
+                                value={phoneCountryCode}
+                                onChange={(e) =>
+                                    setPhoneCountryCode(e.target.value)
+                                }
+                                aria-label="Phone country code"
+                                className="h-12 w-full appearance-none rounded-full border border-border bg-white py-0 pl-3 pr-7 text-sm leading-normal text-navy outline-none focus:border-[#12A0F5]"
+                            >
+                                <option value="+234">+234</option>
+                                <option value="+61">+61</option>
+                            </select>
+                            <ChevronDown
+                                size={14}
+                                aria-hidden="true"
+                                className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-navy"
+                            />
+                        </div>
+                        <input
+                            id="assessment-phone"
+                            name="phone"
+                            type="tel"
+                            required
+                            inputMode="tel"
+                            autoComplete="tel-national"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder="Phone number"
+                            aria-describedby="assessment-phone-help"
+                            className="h-12 min-w-0 w-full rounded-full border border-border px-4 py-0 text-sm leading-normal text-navy outline-none placeholder:text-muted_foreground focus:border-[#12A0F5]"
+                        />
+                    </div>
+                    <p id="assessment-phone-help" className="mt-2 text-xs text-muted_foreground">
+                        We may call you about your child&rsquo;s assessment.
+                    </p>
+                </div>
+
+                <div>
                     <label className="text-sm font-medium text-navy">
                         Email Address
                     </label>
@@ -780,6 +854,12 @@ function Unlock({
                         unsubscribe at any time.
                     </span>
                 </label>
+
+                {submitError && (
+                    <p role="alert" className="text-sm text-red-600">
+                        {submitError}
+                    </p>
+                )}
 
                 <button
                     type="submit"
