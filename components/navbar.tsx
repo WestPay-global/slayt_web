@@ -8,15 +8,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Logo from "@/images/logo.png";
 
-const navLinks = [
+type NavLink =
+    | { href: string; label: string; children?: never }
+    | { label: string; children: { href: string; label: string }[]; href?: never };
+
+const navLinks: NavLink[] = [
     { href: "/features", label: "Features" },
     { href: "/about", label: "About" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
     {
         label: "Resources",
         children: [
-            { href: "/blog", label: "Blog" },
             { href: "/assessment", label: "Assessment" },
         ],
     },
@@ -38,7 +42,7 @@ export default function Navbar() {
                 {/* Desktop Navigation */}
                 <ul className="hidden items-center gap-8 md:flex">
                     {navLinks.map((link) => {
-                        if ("children" in link) {
+                        if (link.children) {
                             return (
                                 <li
                                     key={link.label}
@@ -138,7 +142,7 @@ export default function Navbar() {
                     >
                         <ul className="flex flex-col gap-4 px-6 py-4">
                             {navLinks.map((link) => {
-                                if ("children" in link) {
+                                if (link.children) {
                                     return (
                                         <li key={link.label}>
                                             <button

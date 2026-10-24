@@ -75,7 +75,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${smooch.variable}`}>
-          {/* Google Ads Global Site Tag */}
+          {/* Google tag for Ads and Analytics */}
             <Script
                  src="https://www.googletagmanager.com/gtag/js?id=AW-17360140927"
                  strategy="afterInteractive"
@@ -86,6 +86,7 @@ export default function RootLayout({
                                 function gtag(){dataLayer.push(arguments);}
                                 gtag('js', new Date());
                                 gtag('config', 'AW-17360140927');
+                                gtag('config', 'G-T5W4G6JK46');
                               `}
             </Script>
             <body className="antialiased">
