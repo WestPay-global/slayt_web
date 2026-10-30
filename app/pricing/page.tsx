@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { ogImage } from "@/lib/og";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -10,7 +11,7 @@ import Faq from "@/components/pricing/faqs";
 import CTASection from "@/components/cta-section";
 
 export const metadata: Metadata = {
-    title: "Pricing | SLAYT Family Chore App",
+    title: "Pricing",
     description:
         "Simple, transparent pricing. Start completely free. No hidden fees. Build better family habits without stress.",
     keywords: [
@@ -19,9 +20,11 @@ export const metadata: Metadata = {
         "free chore app",
         "kids reward app pricing",
     ],
+    alternates: { canonical: "/pricing" },
     openGraph: {
-        title: "Pricing | SLAYT",
+        title: "Pricing | Slayt",
         description: "Start free today. No credit card required.",
+        images: [ogImage],
     },
 };
 

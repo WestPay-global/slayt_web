@@ -7,7 +7,7 @@ import PrivacyContent from "@/components/privacy/privacy-content";
 import PrivacyHero from "@/components/privacy/hero";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | SLAYT Family Chore App",
+    title: "Privacy Policy",
     description:
         "We take your family's privacy seriously. Read our privacy policy to understand how we protect your data with strong encryption and full transparency.",
     keywords: [
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
         "family app privacy",
         "slayt privacy",
     ],
+    alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

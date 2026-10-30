@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Smooch } from "next/font/google";
 import ScrollToTop from "@/components/scroll-to-top";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/links";
+import { ogImage } from "@/lib/og";
 
 import "./globals.css";
 
@@ -11,16 +13,18 @@ const smooch = Smooch({
     weight: ["400"],
 });
 
+const description =
+    "Build family routines, encourage responsibility and celebrate your child’s progress. Slayt gives parents and children a shared way to grow together.";
+
 export const metadata: Metadata = {
     metadataBase: new URL("https://theslayt.com"),
 
     title: {
-        default: "Family Chore App | SLAYT Turns Chores into Adventures",
-        template: "%s | SLAYT",
+        default: "Slayt | Parenting App for Confident, Independent Kids",
+        template: "%s | Slayt",
     },
 
-    description:
-        "Family chore app that makes responsibilities fun for the whole family. Assign tasks, track progress in real time, reward kids, and start a free trial today.",
+    description,
 
     keywords: [
         "family chore app",
@@ -32,9 +36,9 @@ export const metadata: Metadata = {
         "habit building for families",
     ],
 
-    authors: [{ name: "SLAYT" }],
-    creator: "SLAYT",
-    publisher: "SLAYT",
+    authors: [{ name: "Slayt" }],
+    creator: "Slayt",
+    publisher: "Slayt",
 
     robots: {
         index: true,
@@ -48,24 +52,55 @@ export const metadata: Metadata = {
         },
     },
 
+    // Canonicals are set per page; a root canonical would be inherited by
+    // pages without their own (e.g. blog posts) and point them at "/".
+
     openGraph: {
         type: "website",
-        url: "https://theslayt.com",
-        siteName: "SLAYT",
-        images: [
-            {
-                url: "/og-image.png", // create this in /public
-                width: 1200,
-                height: 630,
-                alt: "SLAYT Family Chore App",
-            },
-        ],
+        siteName: "Slayt",
+        images: [ogImage],
     },
 
     twitter: {
         card: "summary_large_image",
-        images: ["/og-image.png"],
+        images: [ogImage.url],
     },
+};
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://theslayt.com/#org",
+            name: "Slayt",
+            url: "https://theslayt.com",
+            logo: "https://theslayt.com/icon.png",
+            sameAs: [
+                "https://www.instagram.com/slayt3131",
+                "https://www.tiktok.com/@theslayt",
+                "https://www.facebook.com/share/1AU1cNY8DH/",
+                APP_STORE_URL,
+                PLAY_STORE_URL,
+            ],
+        },
+        {
+            "@type": "MobileApplication",
+            name: "Slayt",
+            operatingSystem: "iOS, Android",
+            applicationCategory: "LifestyleApplication",
+            description,
+            url: "https://theslayt.com",
+            image: "https://theslayt.com/og-image.png",
+            installUrl: [APP_STORE_URL, PLAY_STORE_URL],
+            audience: {
+                "@type": "PeopleAudience",
+                audienceType: "Parents of children aged 4–18",
+            },
+            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            publisher: { "@id": "https://theslayt.com/#org" },
+        },
+    ],
 };
 
 export default function RootLayout({
@@ -90,6 +125,12 @@ export default function RootLayout({
                               `}
             </Script>
             <body className="antialiased">
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+                    }}
+                />
                 <ScrollToTop />
                 {children}
             </body>

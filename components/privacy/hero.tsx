@@ -1,17 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ShieldCheckIcon } from "lucide-react";
 
 export default function PrivacyHero() {
   return (
     <section className="px-6 py-20">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="motion-safe:animate-hero-rise">
           <h1 className="font-bold text-navy ">
             Your family's privacy. <br className="hidden md:block" />
             <span className="text-blue">matters</span>
@@ -25,7 +20,7 @@ export default function PrivacyHero() {
               No Ads. No data selling. Parents controlled.
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

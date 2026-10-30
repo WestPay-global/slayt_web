@@ -4,6 +4,7 @@ import sharp from "sharp";
 import { NextRequest, NextResponse } from "next/server";
 import { createLead } from "@/lib/monday";
 import { normalizeAssessmentPhone } from "@/lib/assessment-phone";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/links";
 
 /**
  * Sends the parenting-assessment report to the parent's email.
@@ -11,17 +12,12 @@ import { normalizeAssessmentPhone } from "@/lib/assessment-phone";
  * Uses Resend's REST API directly (no SDK dependency). Required env:
  *
  *   RESEND_API_KEY=re_xxxxxxxx
- *   QUIZ_FROM_EMAIL="SLAYT <reports@yourdomain.com>"   # a verified sender
+ *   QUIZ_FROM_EMAIL="Slayt <reports@yourdomain.com>"   # a verified sender
  *
  * All images (logo, teddy mascot, award, store badges and the dynamically
  * generated score ring) are embedded as inline CID attachments, so the email
  * renders correctly no matter where the site is deployed.
  */
-
-const APP_STORE_URL =
-    "https://apps.apple.com/ng/app/slayt-closer-together/id6470950940";
-const PLAY_STORE_URL =
-    "https://play.google.com/store/apps/details?id=com.slayt&hl=en";
 
 type ReportPayload = {
     fullName?: string;
@@ -344,7 +340,7 @@ export async function POST(req: NextRequest) {
             body: JSON.stringify({
                 from,
                 to: [body.email],
-                subject: "Your Child's Responsibility Profile — SLAYT",
+                subject: "Your Child's Responsibility Profile — Slayt",
                 html: buildEmailHtml(body),
                 attachments: [...staticAssets, ring],
             }),

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { ogImage } from "@/lib/og";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -7,18 +8,20 @@ import AccessibilityHero from "@/components/accessibility/hero";
 import CTASection from "@/components/cta-section";
 
 export const metadata: Metadata = {
-    title: "Accessibility | SLAYT Family Chore App",
+    title: "Accessibility",
     description:
-        "SLAYT is committed to accessibility. Learn how we design an inclusive family chore app that works for every child and parent.",
+        "Slayt is committed to accessibility. Learn how we design an inclusive family chore app that works for every child and parent.",
     keywords: [
         "accessibility",
         "inclusive app",
         "family app accessibility",
         "slayt accessibility",
     ],
+    alternates: { canonical: "/accessibility" },
     openGraph: {
-        title: "Accessibility | SLAYT",
+        title: "Accessibility | Slayt",
         description: "Building an inclusive experience for every family.",
+        images: [ogImage],
     },
 };
 

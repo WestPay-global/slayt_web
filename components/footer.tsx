@@ -7,11 +7,7 @@ import { MapPin, Mail, Phone } from "lucide-react";
 
 import Apple from "@/images/apple.png";
 import Google from "@/images/google.png";
-
-const APP_STORE_URL =
-    "https://apps.apple.com/ng/app/slayt-closer-together/id6470950940";
-const PLAY_STORE_URL =
-    "https://play.google.com/store/apps/details?id=com.slayt&hl=en";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/links";
 
 const whySlayt = [
     { label: "About us", href: "/about" },
@@ -42,7 +38,7 @@ export default function Footer() {
                             href="/"
                             className="flex items-center gap-1.5 mb-4"
                         >
-                            <Image src={Logo} alt="logo image" priority />
+                            <Image src={Logo} alt="Slayt" priority />
                         </Link>
                         <p className="text-sm text-muted_foreground leading-relaxed mb-6">
                             Slayt helps parents raise responsible, confident

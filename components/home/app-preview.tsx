@@ -164,7 +164,7 @@ export default function AppPreview() {
                     >
                         <Image
                             src={bind}
-                            alt="Slayt app preview"
+                            alt="Slayt parent dashboard showing weekly points, completed chores and each child's streak"
                             className="w-full h-auto object-contain scale-125 origin-bottom md:scale-150 md:origin-bottom"
                         />
                     </motion.div>

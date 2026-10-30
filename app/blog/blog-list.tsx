@@ -323,25 +323,15 @@ export default function BlogList({ posts }: { posts: PostListItem[] }) {
             {/* HERO */}
             <section className="relative overflow-hidden px-6 pt-24 pb-16">
                 <div className="relative mx-auto max-w-6xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 text-xs font-semibold text-blue bg-[#fafafa] px-4 py-2 rounded-full mb-6 border border-[#e0e7ff]"
+                    <div
+                        className="motion-safe:animate-hero-rise inline-flex items-center gap-2 text-xs font-semibold text-blue bg-[#fafafa] px-4 py-2 rounded-full mb-6 border border-[#e0e7ff]"
                     >
                         <span className="w-1.5 h-1.5 rounded-full bg-blue animate-pulse" />
                         Slayt Journal
-                    </motion.div>
+                    </div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.1,
-                            ease: [0.25, 0.46, 0.45, 0.94],
-                        }}
-                        className="text-5xl md:text-7xl font-black text-navy leading-[1.05] max-w-4xl"
+                    <h1
+                        className="motion-safe:animate-hero-rise [animation-delay:100ms] text-5xl md:text-7xl font-black text-navy leading-[1.05] max-w-4xl"
                         style={{
                             fontFamily: "'Playfair Display', Georgia, serif",
                         }}
@@ -362,24 +352,18 @@ export default function BlogList({ posts }: { posts: PostListItem[] }) {
                                 className="absolute bottom-1 left-0 right-0 h-3 bg-navy/40 -z-0 origin-left rounded"
                             />
                         </span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="mt-6 text-muted_foreground text-lg max-w-xl leading-relaxed"
+                    <p
+                        className="motion-safe:animate-hero-rise [animation-delay:400ms] mt-6 text-muted_foreground text-lg max-w-xl leading-relaxed"
                     >
                         Ideas, research, and honest stories for families
                         building better habits — one day at a time.
-                    </motion.p>
+                    </p>
 
                     {/* Stats */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 }}
-                        className="mt-10 flex gap-8"
+                    <div
+                        className="motion-safe:animate-hero-rise [animation-delay:600ms] mt-10 flex gap-8"
                     >
                         {[
                             [String(posts.length), "Articles"],
@@ -400,7 +384,7 @@ export default function BlogList({ posts }: { posts: PostListItem[] }) {
                                 </div>
                             </div>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -525,13 +509,13 @@ export default function BlogList({ posts }: { posts: PostListItem[] }) {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3, duration: 0.7 }}
-                                className="text-4xl md:text-6xl font-black text-white leading-tight mb-6"
+                                className="text-4xl md:text-6xl font-black text-white leading-tight mb-6 uppercase"
                                 style={{
                                     fontFamily:
                                         "'Playfair Display', Georgia, serif",
                                 }}
                             >
-                                WANT SLAYT UPDATES?
+                                Want Slayt updates?
                             </motion.h2>
 
                             <motion.p

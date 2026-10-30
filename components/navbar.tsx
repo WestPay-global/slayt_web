@@ -36,7 +36,7 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
             <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
                 <Link href="/" className="flex items-center gap-1.5">
-                    <Image src={Logo} alt="Logo" priority />
+                    <Image src={Logo} alt="Slayt home" priority />
                 </Link>
 
                 {/* Desktop Navigation */}

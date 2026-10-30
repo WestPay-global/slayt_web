@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { getPost, getPosts } from "@/lib/posts";
+import { ogImage } from "@/lib/og";
 import ArticleView from "./article-view";
 
 export async function generateStaticParams() {
@@ -36,6 +37,7 @@ export async function generateMetadata({
             type: "article",
             publishedTime: post.publishedAt,
             authors: post.authors.map((a) => a.name),
+            images: [ogImage],
         },
     };
 }

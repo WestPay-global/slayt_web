@@ -10,11 +10,7 @@ export default function AboutHero() {
     return (
         <section className="bg-background px-6 py-16 md:py-24">
             <div className="mx-auto max-w-6xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
+                <div className="motion-safe:animate-hero-rise">
                     <h1 className="font-bold text-navy ">
                         We built Slayt for families{" "}
                         <br className="hidden md:block" />
@@ -49,7 +45,7 @@ export default function AboutHero() {
                             Watch 30s Demo
                         </motion.button>
                     </div>
-                </motion.div>
+                </div>
             </div>
             {/* ==================== VIDEO MODAL ==================== */}
             <AnimatePresence>

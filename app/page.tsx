@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { ogImage } from "@/lib/og";
 
 import Navbar from "@/components/navbar";
 import Hero from "@/components/home/hero";
@@ -20,23 +21,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://theslayt.com",
-    siteName: "SLAYT",
+    siteName: "Slayt",
     title,
     description,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Slayt parenting app",
-      },
-    ],
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og-image.png"],
+    images: [ogImage.url],
   },
 };
 

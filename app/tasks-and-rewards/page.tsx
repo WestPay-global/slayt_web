@@ -10,15 +10,16 @@ import Habit from "@/components/task/habit";
 import TaskExpect from "@/components/task/task-expect";
 
 export const metadata: Metadata = {
-    title: "Tasks & Rewards | SLAYT Family Chore App",
+    title: "Tasks & Rewards",
     description:
-        "Discover how SLAYT turns chores into exciting tasks with meaningful rewards. Build responsibility through positive reinforcement.",
+        "Discover how Slayt turns chores into exciting tasks with meaningful rewards. Build responsibility through positive reinforcement.",
     keywords: [
         "tasks and rewards",
         "chore rewards",
         "kids reward system",
         "positive parenting",
     ],
+    alternates: { canonical: "/tasks-and-rewards" },
 };
 
 export default function TasksAndRewardsPage() {

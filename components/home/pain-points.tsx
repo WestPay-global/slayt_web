@@ -28,7 +28,7 @@ export default function PainPoints() {
     <section className="bg-background py-16 px-6 border border-b-1">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          title="The Problem (Pain Points)"
+          title="Sound familiar?"
           subtitle="Slayt helps parents build responsibility through tasks, rewards, and consistency"
         />
 

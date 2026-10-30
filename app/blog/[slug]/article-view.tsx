@@ -94,34 +94,22 @@ export default function ArticleView({ post }: { post: PostDetail }) {
                         </motion.span>
                     </Link>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.7,
-                            ease: [0.25, 0.46, 0.45, 0.94],
-                        }}
-                        className="text-3xl md:text-5xl font-black uppercase text-navy leading-[1.05] tracking-tight text-balance"
+                    <h1
+                        className="motion-safe:animate-hero-rise text-3xl md:text-5xl font-black uppercase text-navy leading-[1.05] tracking-tight text-balance"
                     >
                         {post.title}
-                    </motion.h1>
+                    </h1>
 
                     {post.excerpt && (
-                        <motion.p
-                            initial={{ opacity: 0, y: 16 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.15 }}
-                            className="mt-6 text-lg md:text-xl italic text-muted_foreground leading-relaxed max-w-3xl"
+                        <p
+                            className="motion-safe:animate-hero-rise [animation-delay:150ms] mt-6 text-lg md:text-xl italic text-muted_foreground leading-relaxed max-w-3xl"
                         >
                             {post.excerpt}
-                        </motion.p>
+                        </p>
                     )}
 
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="mt-8 flex flex-wrap items-center gap-3 text-sm"
+                    <div
+                        className="motion-safe:animate-hero-rise [animation-delay:300ms] mt-8 flex flex-wrap items-center gap-3 text-sm"
                     >
                         <span className="inline-flex items-center gap-2 font-semibold tracking-wide uppercase text-xs px-4 py-1.5 rounded-full bg-rose-50 text-rose-600">
                             <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
@@ -135,7 +123,7 @@ export default function ArticleView({ post }: { post: PostDetail }) {
                         <span className="text-muted_foreground">
                             {post.readTimeMinutes} min read
                         </span>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 

@@ -1,73 +1,27 @@
 // app/sitemap.ts
 import { MetadataRoute } from "next";
 
+const BASE = "https://theslayt.com";
+
+// Set `updated` to the page's real last-edit date whenever its content
+// changes. changefreq/priority are omitted: Google ignores them.
+const pages: { path: string; updated: string }[] = [
+    { path: "", updated: "2026-10-24" },
+    { path: "/features", updated: "2026-10-24" },
+    { path: "/tasks-and-rewards", updated: "2026-10-24" },
+    { path: "/pricing", updated: "2026-10-24" },
+    { path: "/about", updated: "2026-10-24" },
+    { path: "/blog", updated: "2026-10-24" },
+    { path: "/faq", updated: "2026-10-24" },
+    { path: "/contact", updated: "2026-10-24" },
+    { path: "/privacy", updated: "2026-10-24" },
+    { path: "/terms", updated: "2026-10-24" },
+    { path: "/accessibility", updated: "2026-10-24" },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    return [
-        {
-            url: "https://theslayt.com",
-            lastModified: new Date(),
-            changeFrequency: "daily",
-            priority: 1,
-        },
-        {
-            url: "https://theslayt.com/features",
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 0.9,
-        },
-        {
-            url: "https://theslayt.com/about",
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: "https://theslayt.com/pricing",
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: "https://theslayt.com/contact",
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
-        {
-            url: "https://theslayt.com/blog",
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.7,
-        },
-        {
-            url: "https://theslayt.com/faq",
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
-        {
-            url: "https://theslayt.com/privacy",
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.5,
-        },
-        {
-            url: "https://theslayt.com/terms",
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.5,
-        },
-        {
-            url: "https://theslayt.com/accessibility",
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.5,
-        },
-        {
-            url: "https://theslayt.com/tasks-and-rewards",
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.5,
-        },
-    ];
+    return pages.map((p) => ({
+        url: `${BASE}${p.path}`,
+        lastModified: p.updated,
+    }));
 }

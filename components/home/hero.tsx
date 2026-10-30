@@ -48,38 +48,23 @@ export default function Hero() {
         <section className="relative overflow-hidden px-6 pb-16 pt-12 md:pt-20 md:pb-24 border-b">
             <div className="mx-auto max-w-6xl">
                 <div className="text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="font-bold text-navy text-balance"
-                    >
+                    <h1 className="motion-safe:animate-hero-rise font-bold text-navy text-balance">
                         Help your child grow into{" "}
                         <br className="hidden md:block" />
                         the <BouncingText text="person" />
                         they&rsquo;re becoming.
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.15 }}
-                        className="mx-auto mt-6 max-w-lg text-muted_foreground"
-                    >
+                    <p className="motion-safe:animate-hero-rise [animation-delay:150ms] mx-auto mt-6 max-w-lg text-muted_foreground">
                         Slayt helps families build routines, celebrate
                         progress, <br className="hidden md:block" />
                         and give children more responsibility as they
-                        grow
+                        grow{" "}
                         <br className="hidden md:block" />
                         while keeping parents connected and in control.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="mt-8 flex flex-wrap items-center justify-center gap-4"
-                    >
+                    <div className="motion-safe:animate-hero-rise [animation-delay:300ms] mt-8 flex flex-wrap items-center justify-center gap-4">
                         <button
                             onClick={() => {
                                 const footer =
@@ -103,14 +88,9 @@ export default function Hero() {
                             </span>
                             See How Slayt Works
                         </motion.button>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.45 }}
-                        className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-muted_foreground"
-                    >
+                    <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-muted_foreground">
                         <span className="flex items-center gap-1.5">
                             <CheckCircle2 size={14} className="text-navy" />
                             Made for families with children aged 4–18
@@ -119,21 +99,16 @@ export default function Hero() {
                             <CheckCircle2 size={14} className="text-navy" />
                             Set up together in minutes
                         </span>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Animated image gallery */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.5 }}
-                    className="mt-8"
-                >
+                <div className="motion-safe:animate-hero-rise [animation-delay:450ms] mt-8">
                     <div className="relative mt-12 hidden md:block">
                         <MotionImage
                             key={activeIndex}
                             src={Vector}
-                            alt="Vector image pointer"
+                            alt=""
                             animate={{ opacity: [1, 0.6, 1] }}
                             transition={{
                                 duration: 1.4,
@@ -147,7 +122,7 @@ export default function Hero() {
                     <div className="grid grid-cols-3 gap-3 md:grid-cols-5 md:gap-4">
                         {/* Main Image */}
                         <div className="col-span-3 md:col-span-3 row-span-3 relative overflow-hidden rounded-2xl aspect-[4/3]">
-                            <AnimatePresence mode="wait">
+                            <AnimatePresence mode="wait" initial={false}>
                                 <motion.div
                                     key={activeIndex}
                                     initial={{ opacity: 0, scale: 1.05 }}
@@ -168,22 +143,16 @@ export default function Hero() {
                         </div>
 
                         {/* Small Images */}
-                        {smallImages.map((img, i) => {
+                        {smallImages.map((img) => {
                             const originalIndex = images.findIndex(
                                 (im) => im.src === img.src,
                             );
                             return (
-                                <motion.div
+                                <div
                                     key={img.alt}
                                     onClick={() =>
                                         setActiveIndex(originalIndex)
                                     }
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{
-                                        duration: 0.3,
-                                        delay: i * 0.05,
-                                    }}
                                     className="col-span-1 md:col-span-2 relative overflow-hidden rounded-2xl cursor-pointer group aspect-square md:aspect-[28/10]"
                                 >
                                     <Image
@@ -193,19 +162,14 @@ export default function Hero() {
                                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-[#001F30]/45" />
-                                </motion.div>
+                                </div>
                             );
                         })}
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Social Proof */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.7 }}
-                    className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-navy"
-                >
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-navy">
                     <span className="flex items-center gap-1.5 font-semibold">
                         4.7 <span className="text-yellow-400">★</span> Rating
                     </span>
@@ -213,7 +177,7 @@ export default function Hero() {
                     <span className="text-navy font-semibold">
                         Used by 500+ families
                     </span>
-                </motion.div>
+                </div>
             </div>
 
             {/* ==================== VIDEO MODAL ==================== */}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function TaskHero() {
@@ -10,11 +9,7 @@ export default function TaskHero() {
     return (
         <section className="px-6 py-20 md:py-24">
             <div className="mx-auto max-w-[70rem]">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
+                <div className="motion-safe:animate-hero-rise">
                     <h1 className="font-bold text-navy ">
                         Tasks build habits. <br className="hidden md:block" />
                         <span className="text-blue">
@@ -43,7 +38,7 @@ export default function TaskHero() {
                             See Features
                         </button>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

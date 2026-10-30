@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { ogImage } from "@/lib/og";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -7,9 +8,9 @@ import CTASection from "@/components/cta-section";
 import ContactForm from "@/components/contact/contact-form";
 
 export const metadata: Metadata = {
-    title: "Contact Us | SLAYT Family Chore App",
+    title: "Contact Us",
     description:
-        "Have questions about SLAYT? Need support or want to share feedback? Our team is ready to help you and your family.",
+        "Have questions about Slayt? Need support or want to share feedback? Our team is ready to help you and your family.",
     keywords: [
         "contact slayt",
         "slayt support",
@@ -17,10 +18,12 @@ export const metadata: Metadata = {
         "reach slayt team",
         "customer service",
     ],
+    alternates: { canonical: "/contact" },
     openGraph: {
-        title: "Contact Us | SLAYT",
-        description: "Get in touch with the SLAYT team.",
+        title: "Contact Us | Slayt",
+        description: "Get in touch with the Slayt team.",
         url: "https://theslayt.com/contact",
+        images: [ogImage],
     },
 };
 

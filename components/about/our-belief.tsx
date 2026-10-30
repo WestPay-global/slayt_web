@@ -38,9 +38,9 @@ export default function OurBelief() {
           transition={{ duration: 0.5 }}
           className="flex items-center justify-center gap-3 mb-4"
         >
-          <Image src={star} alt="logo image" priority />
+          <Image src={star} alt="" priority />
           <h2 className="font-bold text-navy">Our belief is simple.</h2>
-          <Image src={star} alt="logo image" priority />
+          <Image src={star} alt="" priority />
         </motion.div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">

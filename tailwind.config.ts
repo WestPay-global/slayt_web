@@ -85,10 +85,17 @@ const config: Config = {
             height: '0',
           },
         },
+        // Transform only: above-the-fold text paints at full opacity on the
+        // first frame (no hidden H1 until hydration).
+        'hero-rise': {
+          from: { transform: 'translateY(16px)' },
+          to: { transform: 'none' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'hero-rise': 'hero-rise .6s cubic-bezier(.2,.7,.2,1) both',
       },
     },
   },

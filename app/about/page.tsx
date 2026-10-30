@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { ogImage } from "@/lib/og";
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -11,12 +12,13 @@ import DesignedForFamilies from "@/components/about/designed-for-families";
 import FamiliesSeeing from "@/components/about/families-seeing";
 import PrivacyAndMission from "@/components/about/privacy-and-mission";
 
-const title = "About Slayt | Helping Children Grow with Confidence";
+const title = "About: Helping Children Grow with Confidence";
+const socialTitle = `${title} | Slayt`;
 const description =
     "Discover why we built Slayt: to help parents guide everyday growth through clear routines, encouragement and age-appropriate responsibility.";
 
 export const metadata: Metadata = {
-    title: { absolute: title },
+    title,
     description,
     keywords: [
         "about slayt",
@@ -29,23 +31,16 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         url: "https://theslayt.com/about",
-        siteName: "SLAYT",
-        title,
+        siteName: "Slayt",
+        title: socialTitle,
         description,
-        images: [
-            {
-                url: "/og-image.png",
-                width: 1200,
-                height: 630,
-                alt: "About Slayt",
-            },
-        ],
+        images: [ogImage],
     },
     twitter: {
         card: "summary_large_image",
-        title,
+        title: socialTitle,
         description,
-        images: ["/og-image.png"],
+        images: [ogImage.url],
     },
 };
 

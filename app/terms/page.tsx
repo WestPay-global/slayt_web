@@ -7,10 +7,11 @@ import TermsContent from "@/components/terms/terms-content";
 import TermsHero from "@/components/terms/hero";
 
 export const metadata: Metadata = {
-    title: "Terms of Service | SLAYT",
+    title: "Terms of Service",
     description:
-        "Read our Terms of Service to understand the rules and guidelines for using the SLAYT family chore and habit-building platform.",
+        "Read our Terms of Service to understand the rules and guidelines for using the Slayt family chore and habit-building platform.",
     keywords: ["terms of service", "slayt terms", "user agreement"],
+    alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

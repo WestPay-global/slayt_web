@@ -164,7 +164,7 @@ export default function HowItWorks() {
                                 {/* Big faded number to the right */}
                                 <Image
                                     src={numberImg1}
-                                    alt="1"
+                                    alt=""
                                     width={50}
                                     height={65}
                                     className={`select-none flex-shrink-0 -mt-12 transition-opacity duration-500 ${activeStep === 0 ? "opacity-100" : "opacity-25"}`}
@@ -200,7 +200,7 @@ export default function HowItWorks() {
                                 </div>
                                 <Image
                                     src={numberImg2}
-                                    alt="2"
+                                    alt=""
                                     width={50}
                                     height={65}
                                     className={`select-none flex-shrink-0 -mt-1 transition-opacity duration-500 ${activeStep === 1 ? "opacity-100" : "opacity-25"}`}
@@ -230,7 +230,7 @@ export default function HowItWorks() {
                                 </div>
                                 <Image
                                     src={numberImg3}
-                                    alt="3"
+                                    alt=""
                                     width={50}
                                     height={65}
                                     className={`select-none flex-shrink-0 -mt-1 transition-opacity duration-500 ${activeStep === 2 ? "opacity-100" : "opacity-25"}`}
@@ -327,7 +327,7 @@ export default function HowItWorks() {
                                     <div className="w-1/2 pl-8 flex justify-start">
                                         <Image
                                             src={img}
-                                            alt={`${step + 1}`}
+                                            alt=""
                                             width={40}
                                             height={50}
                                             className={`select-none transition-opacity duration-500 ${activeStep === step ? "opacity-100" : "opacity-20"}`}
@@ -342,7 +342,7 @@ export default function HowItWorks() {
                                     <div className="w-1/2 pr-8 flex justify-end">
                                         <Image
                                             src={img}
-                                            alt={`${step + 1}`}
+                                            alt=""
                                             width={40}
                                             height={50}
                                             className={`select-none transition-opacity duration-500 ${activeStep === step ? "opacity-100" : "opacity-20"}`}

@@ -1,17 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function FaqHero() {
     return (
         <section className="px-6 py-20 md:py-24 border-b ">
             <div className="mx-auto max-w-6xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
+                <div className="motion-safe:animate-hero-rise">
                     <h1 className="font-bold text-navy ">
                         Questions before you. <br className="hidden md:block" />
                         <span className="text-blue">Start?</span>
@@ -34,7 +29,7 @@ export default function FaqHero() {
                             No credit card required.
                         </p>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

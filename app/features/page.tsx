@@ -11,7 +11,7 @@ import ComparisonTable from "@/components/features/comparison-table";
 import FAQ from "@/components/features/faq";
 
 export const metadata: Metadata = {
-    title: "Features | SLAYT Family Chore App",
+    title: "Features: Family Chore App",
     description:
         "Powerful features that make chores fun and effective: task management, real-time tracking, rewards system, notifications, and progress insights.",
     keywords: [
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
         "reward system for kids",
         "chore tracker app",
     ],
+    alternates: { canonical: "/features" },
 };
 
 export default function FeaturesPage() {
