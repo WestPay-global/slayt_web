@@ -16,8 +16,8 @@ export default function CTASection({
   return (
     <section className="bg-teal py-20 px-6">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ y: 30 }}
+        whileInView={{ y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="mx-auto text-center"

@@ -36,8 +36,8 @@ export default function PainPoints() {
           {cards.map((card, i) => (
             <div key={card.title} className="flex flex-1">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ y: 20 }}
+                whileInView={{ y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="flex-1 p-6 md:px-8 mx-2 group cursor-pointer transition-all duration-300 hover:shadow hover:bg-white hover:rounded-sm"

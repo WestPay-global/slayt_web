@@ -170,10 +170,6 @@ export default function Hero() {
 
                 {/* Social Proof */}
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-navy">
-                    <span className="flex items-center gap-1.5 font-semibold">
-                        4.7 <span className="text-yellow-400">★</span> Rating
-                    </span>
-                    <span className="h-4 w-[2px] bg-navy" />
                     <span className="text-navy font-semibold">
                         Used by 500+ families
                     </span>

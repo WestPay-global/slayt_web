@@ -23,32 +23,6 @@ export default function FamiliesSeeing() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading title="Families are already seeing changes." />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-6 flex items-center justify-center gap-3"
-        >
-          <span className="text-4xl font-extrabold text-navy">4.7</span>
-          <div className="flex flex-col">
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  size={16}
-                  className={
-                    i < 4 ? "fill-teal text-teal" : "fill-teal/30 text-teal/30"
-                  }
-                />
-              ))}
-            </div>
-            <span className="text-sm text-muted_foreground">
-              Based on 563 ratings
-            </span>
-          </div>
-        </motion.div>
-
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <motion.div

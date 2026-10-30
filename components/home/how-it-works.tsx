@@ -371,7 +371,7 @@ export default function HowItWorks() {
                         className="relative w-[1400px] h-[620px]"
                         style={{ marginBottom: "-210px" }}
                     >
-                        <AnimatePresence mode="sync">
+                        <AnimatePresence mode="sync" initial={false}>
                             <motion.div
                                 key={activeStep}
                                 initial={{ opacity: 0 }}

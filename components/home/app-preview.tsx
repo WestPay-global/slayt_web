@@ -13,46 +13,6 @@ const metrics = [
     { label: "Customer Support", score: 4.7, color: "bg-navy" },
 ];
 
-// ── Half-star component ──────────────────────────────────────────────────────
-const StarIcon = ({
-    fill,
-    index,
-}: {
-    fill: "full" | "half" | "empty";
-    index: number;
-}) => (
-    <svg width="18" height="18" viewBox="0 0 24 24">
-        <defs>
-            <clipPath id={`half-clip-${index}`}>
-                <rect x="0" y="0" width="12" height="24" />
-            </clipPath>
-        </defs>
-        {/* Empty base */}
-        <path
-            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-            fill="#e2e8f0"
-        />
-        {/* Filled overlay */}
-        {fill !== "empty" && (
-            <path
-                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                fill="hsl(var(--teal, 174 72% 46%))"
-                className="fill-teal"
-                clipPath={
-                    fill === "half" ? `url(#half-clip-${index})` : undefined
-                }
-            />
-        )}
-    </svg>
-);
-
-const getStarFills = (rating: number): ("full" | "half" | "empty")[] =>
-    Array.from({ length: 5 }, (_, i) => {
-        if (rating >= i + 1) return "full";
-        if (rating >= i + 0.5) return "half";
-        return "empty";
-    });
-
 export default function AppPreview() {
     return (
         <section className="pt-20 px-6 overflow-hidden">
@@ -63,35 +23,14 @@ export default function AppPreview() {
                 />
 
                 <div className="mt-14 grid gap-8 lg:grid-cols-[2fr_1.2fr_1.8fr] items-start">
-                    {/* ── Left: Rating + metrics card ── */}
+                    {/* ── Left: Metrics card ── */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ x: -30 }}
+                        whileInView={{ x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                         className="rounded-2xl border border-border bg-background shadow-md p-8"
                     >
-                        {/* Score + stars */}
-                        <div className="flex items-center justify-between mb-8">
-                            <span className="text-6xl font-extrabold text-navy leading-none">
-                                4.7
-                            </span>
-                            <div>
-                                <div className="flex gap-0.5">
-                                    {getStarFills(4.5).map((fill, i) => (
-                                        <StarIcon
-                                            key={i}
-                                            fill={fill}
-                                            index={i}
-                                        />
-                                    ))}
-                                </div>
-                                <p className="mt-1.5 text-muted_foreground">
-                                    Based on 563 ratings
-                                </p>
-                            </div>
-                        </div>
-
                         {/* Progress bars */}
                         <div className="space-y-5">
                             {metrics.map((m) => (
@@ -125,8 +64,8 @@ export default function AppPreview() {
 
                     {/* ── Middle: text ── */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ y: 20 }}
+                        whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="flex flex-col bg-red-500justify-center items-center text-center md:items-start md:text-left"
@@ -156,8 +95,8 @@ export default function AppPreview() {
 
                     {/* ── Right: Phone mockup ── */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ x: 30 }}
+                        whileInView={{ x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="overflow-visible mt-12 -mr-6 -mb-20 -ml-10 md:-ml-6 md:mt-[10.2rem] md:-mr-0 md:-mb-24"
